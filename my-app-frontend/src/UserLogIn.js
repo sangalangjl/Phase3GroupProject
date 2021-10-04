@@ -2,10 +2,18 @@ import React, {useState} from "react";
 import LogInForm from "./LogInForm";
 
 function UserLogIn () {
-    const [toggleSignup, setToggleSignUp] = useState(false)
-    
+    const [toggleSignUp, setToggleSignUp] = useState(false)
+   
+    function handleToggle() {
+        setToggleSignUp((toggleSignUp) => !toggleSignUp)
+    }
+
     return (
-    <div><LogInForm toggleSignup={toggleSignup}/></div>
+        
+    <div className="userLoginContainer">
+        <button className="toggleButton" onClick={handleToggle} />
+        <LogInForm toggleSignUp={toggleSignUp}/>
+    </div>
     )
 }
 

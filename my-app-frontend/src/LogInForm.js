@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 
 
-function LogInForm ({toggleSignup}) {
+function LogInForm ({toggleSignUp}) {
 
    
     
     return (
-    <> {toggleSignup?
+    <> {toggleSignUp?
         <form className="UserSignUp">
         <label>Username: </label>
             <input type="text" name="user_name"/>
