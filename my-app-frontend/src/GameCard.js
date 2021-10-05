@@ -1,9 +1,16 @@
 import React from "react";
 
-function GameCard () {
+function GameCard ({game}) {
+    const {title, genre, platform, game_played} = game
     
     return (
-    <div></div>
+    <div className="cardContainer">
+        <div>{title}</div>
+        <div>{genre}</div>
+        <div>{platform}</div>
+        <div>{game_played}</div>
+    </div>
+    
     )
 }
 

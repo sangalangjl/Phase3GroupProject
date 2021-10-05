@@ -1,9 +1,12 @@
 import React from "react";
 import GameCard from './GameCard'
-function AllGames () {
-    
+
+function AllGames ({gamesArray}) {
+   const displayGameCards = gamesArray.map(game => <GameCard game={game} key={game.id}/>)
     return (
-    <div><GameCard/></div>
+    <div>
+        {displayGameCards}
+    </div>
     )
 }
 

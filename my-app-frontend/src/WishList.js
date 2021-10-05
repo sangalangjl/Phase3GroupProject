@@ -3,7 +3,7 @@ import GameCard from './GameCard'
 function WishList () {
     
     return (
-    <div><GameCard/></div>
+    <div></div>
     )
 }
 

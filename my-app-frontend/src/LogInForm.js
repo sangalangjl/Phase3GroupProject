@@ -10,26 +10,29 @@ function LogInForm ({toggleSignUp, BASE_URL}) {
     })
 
     function postData(headers) {
-        fetch(`${BASE_URL}/users`, headers)
+       toggleSignUp ? fetch(`${BASE_URL}/users/signup`, headers) : fetch(`${BASE_URL}/users/login`, headers)
         .then(resp => resp.json())
         .then(userData => console.log(userData))
     }
+    
+    // fetch(serverEndpoint, {  
+    //   credentials: 'include' 
 
     function handleSubmit(e) {
         e.preventDefault()
-        
-        const headers = {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+       
+       
+            const headers = {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            }
+                postData(headers)
     }
 
-        postData(headers)
-
-
-    }
+       
 
     function handleOnChange(e) {
         setFormData({...formData, [e.target.name]:e.target.value})
