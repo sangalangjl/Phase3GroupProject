@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 
-function LogInForm ({toggleSignUp, BASE_URL}) {
+function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
     
 
     const [formData, setFormData] = useState({
@@ -10,9 +10,9 @@ function LogInForm ({toggleSignUp, BASE_URL}) {
     })
 
     function postData(headers) {
-       toggleSignUp ? fetch(`${BASE_URL}/users/signup`, headers) : fetch(`${BASE_URL}/users/login`, headers)
+        toggleSignUp ? fetch(`${BASE_URL}/users/signup`, headers) : fetch(`${BASE_URL}/users/login`, headers)
         .then(resp => resp.json())
-        .then(userData => console.log(userData))
+        .then(userID => setSessionID(userID))
     }
     
     // fetch(serverEndpoint, {  
@@ -20,8 +20,7 @@ function LogInForm ({toggleSignUp, BASE_URL}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-       
-       
+
             const headers = {
                 method: "POST",
                 headers: {
@@ -31,8 +30,6 @@ function LogInForm ({toggleSignUp, BASE_URL}) {
             }
                 postData(headers)
     }
-
-       
 
     function handleOnChange(e) {
         setFormData({...formData, [e.target.name]:e.target.value})

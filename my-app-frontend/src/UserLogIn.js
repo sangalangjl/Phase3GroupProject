@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import LogInForm from "./LogInForm";
 
-function UserLogIn ({BASE_URL}) {
+function UserLogIn ({BASE_URL, setSessionID}) {
     const [toggleSignUp, setToggleSignUp] = useState(false)
 
     function handleToggle() {
@@ -12,7 +12,7 @@ function UserLogIn ({BASE_URL}) {
         
     <div className="userLoginContainer">
         <button className="toggleButton" onClick={handleToggle}>Sign Up / Log In</button>
-        <LogInForm toggleSignUp={toggleSignUp} BASE_URL={BASE_URL}/>
+        <LogInForm toggleSignUp={toggleSignUp} BASE_URL={BASE_URL} setSessionID={setSessionID}/>
     </div>
     )
 }
