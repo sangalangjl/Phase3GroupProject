@@ -9,10 +9,23 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
         password: ""
     })
 
+    const [confirmPassword, setConfirmPassword] = useState ("")
+
     function postData(headers) {
         toggleSignUp ? fetch(`${BASE_URL}/users/signup`, headers) : fetch(`${BASE_URL}/users/login`, headers)
         .then(resp => resp.json())
-        .then(userID => setSessionID(userID))
+        .then(userID => {
+           
+            switch (userID) {
+                case "a": 
+                    console.log("Wrong Password")
+                break;
+                case "b":
+                    console.log("User doesn't exist")
+                break;
+                default:  setSessionID(userID)               
+            }
+        })
     }
     
     // fetch(serverEndpoint, {  
@@ -28,7 +41,16 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
                 },
                 body: JSON.stringify(formData)
             }
-                postData(headers)
+                 if (toggleSignUp) {
+                   //if that's true then password and confirm password must match
+                 if (formData.password === confirmPassword){
+                    postData(headers)
+                 } else {
+                     console.log("Passwords do not match")
+                 }
+                } else {
+                    postData(headers)
+               }               
     }
 
     function handleOnChange(e) {
@@ -46,7 +68,7 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
                 {toggleSignUp? 
                 <>
                     <label>Confirm Password: </label> 
-                    <input type="password" name="confirm_password"/> 
+                    <input type="password" name="confirm_password" onChange={(e) => setConfirmPassword(e.target.value)}/> 
                 </>: null } 
             <input type="submit" />
             </form> 
