@@ -11,10 +11,13 @@ function UserLogIn () {
     return (
         
     <div className="userLoginContainer">
-        <button className="toggleButton" onClick={handleToggle} />
+        <button className="toggleButton" onClick={handleToggle}>Sign Up / Log In</button>
         <LogInForm toggleSignUp={toggleSignUp}/>
     </div>
     )
 }
 
 export default UserLogIn
+
+// next: use-state to store info. 
+// test info in backend
