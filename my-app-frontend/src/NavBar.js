@@ -1,10 +1,10 @@
 import React from "react";
 import UserLogIn from "./UserLogIn";
 
-function NavBar () {
+function NavBar ({BASE_URL}) {
     
     return (
-    <div><UserLogIn/></div>
+    <div><UserLogIn BASE_URL={BASE_URL}/></div>
     )
 }
 
