@@ -9,19 +9,31 @@ import GameCard from "./GameCard";
 function App() {
   const BASE_URL = "http://localhost:9292"
   const [gamesArray, setGamesArray] = useState([])
-  const [sessionID, setSessionID] = useState(0)
+  const [userGamesArray, setUserGamesArray] = useState([])
+  const [sessionID, setSessionID] = useState(1) //change back to 0 before publish
 
   useEffect(() => {
-    fetch(`${BASE_URL}/games`)
+    const headers = {
+      method: "POST",
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({id: sessionID})
+      }
+    fetch(`${BASE_URL}/games/pageload`, headers)
     .then(r => r.json())
-    .then(games => setGamesArray(games))
+    .then(games => {
+      console.log(games)
+      setGamesArray(games[0])
+      setUserGamesArray(games[1])
+      })
   }, [])
 
 
   return (
     <div>Loading Game ChangR
       <NavBar BASE_URL={BASE_URL} setSessionID={setSessionID}/>
-      <AllGames BASE_URL={BASE_URL} gamesArray={gamesArray}/>
+      <AllGames BASE_URL={BASE_URL} gamesArray={gamesArray} sessionID={sessionID} userGamesArray={userGamesArray}/>
       {/* <MyGames/> */}
     </div> 
   )

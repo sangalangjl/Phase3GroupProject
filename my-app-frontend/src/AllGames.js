@@ -2,8 +2,9 @@ import React, {useState} from "react";
 import GameCard from './GameCard'
 import placeholder from './assests/placeholder.jpg'
 
-function AllGames ({gamesArray, BASE_URL}) {
-    const displayGameCards = gamesArray.map(game => <GameCard game={game} key={game.id}/>)
+function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray}) {
+
+    const displayGameCards = gamesArray.map(game => <GameCard game={game} key={game.id} BASE_URL={BASE_URL} sessionID={sessionID} userGamesArray={userGamesArray}/>)
 
     const [formData, setFormData] = useState({
         title: "",
@@ -13,8 +14,8 @@ function AllGames ({gamesArray, BASE_URL}) {
     })
 
 
-    const handleOnClick = (e) => {
-        console.log(e)
+    const handleOnClickAddGame = (e) => {
+        console.log(e) //click will render add game form 
     }
 
     function handleOnChange(e) {
@@ -31,7 +32,7 @@ function AllGames ({gamesArray, BASE_URL}) {
             },
             body: JSON.stringify(formData)
         }
-        fetch(`${BASE_URL}/games`, headers)
+        fetch(`${BASE_URL}/games/create`, headers)
         .then(r => r.json())
         .then(data => console.log(data))
     }
@@ -39,8 +40,8 @@ function AllGames ({gamesArray, BASE_URL}) {
     const platformArray = ["Console", "PC", "Mac", "Mobile", "VR"]
     const platformOptions = platformArray.map((platform, index) => 
         <li key={index}>
-            <input type="radio" value={platform} name={platform} id={platform} onChange={handleOnChange} name="platform"/>
-            <label for={platform}>
+            <input type="radio" value={platform} name={platform} id={platform} onChange={handleOnChange}/>
+            <label>
                 {platform}
             </label>
         </li>
@@ -49,8 +50,8 @@ function AllGames ({gamesArray, BASE_URL}) {
     const genreArray = ["Shooters", "Role-Playing", "Action-Adventure", "Survival and Horror", "Platformer"]
     const genreOptions = genreArray.map((genre, index) => 
     <li key={index}>
-        <input type="radio" value={genre} name={genre} id={genre} onChange={handleOnChange} name="genre"/>
-        <label for={genre}>
+        <input type="radio" value={genre} name={genre} id={genre} onChange={handleOnChange}/>
+        <label>
             {genre}
         </label>
     </li>
@@ -58,7 +59,7 @@ function AllGames ({gamesArray, BASE_URL}) {
 
     return (
     <div className="AllGamesContainer">
-        <img className="AddGameCard" src={placeholder} alt="AddGameCard" onClick={handleOnClick}/>
+        <img className="AddGameCard" src={placeholder} alt="AddGameCard" onClick={handleOnClickAddGame}/>
         {displayGameCards}
         <div className="GameCardForm">
             <form onSubmit={handleOnSubmit}>
@@ -69,7 +70,9 @@ function AllGames ({gamesArray, BASE_URL}) {
                 <input type="submit"/>
             </form>
         </div>
+        
     </div>
+
     )
 }
 
