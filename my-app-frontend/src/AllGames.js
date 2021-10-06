@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import GameCard from './GameCard'
 import placeholder from './assests/placeholder.jpg'
 
-function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray}) {
+function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray, setUserGamesArray, showMyGame, setGamesArray}) {
 
     const platformArray = ["Console", "PC", "Mac", "Mobile", "VR"]
     const genreArray = ["Shooters", "Role-Playing", "Action-Adventure", "Survival and Horror", "Platformer"]
@@ -12,6 +12,7 @@ function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray}) {
         platform: "",
         genre: ""
     })
+    console.log(gamesArray)
 
     const displayGameCards = gamesArray.map(game => 
         <GameCard 
@@ -20,6 +21,10 @@ function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray}) {
             BASE_URL={BASE_URL}
             sessionID={sessionID}
             userGamesArray={userGamesArray}
+            setUserGamesArray={setUserGamesArray}
+            showMyGame={showMyGame}
+            gamesArray={gamesArray} 
+            setGamesArray={setGamesArray}
         />
     )
 

@@ -11,6 +11,8 @@ function App() {
   const [gamesArray, setGamesArray] = useState([])
   const [userGamesArray, setUserGamesArray] = useState([])
   const [sessionID, setSessionID] = useState(1) //change back to 0 before publish
+  const [displayUserGames, setDisplayUserGames] = useState()
+  const [showMyGame, setShowMyGame] = useState(false)
 
   useEffect(() => {
     
@@ -23,17 +25,47 @@ function App() {
     fetch(`${BASE_URL}/games/pageload`, headers)
     .then(r => r.json())
     .then(games => {
-      console.log(games)
       setGamesArray(games[0])
       setUserGamesArray(games[1])
     })
   }, [])
 
+  useEffect(() => {
+      fetch(`${BASE_URL}/users/${sessionID}`)
+      .then(r => r.json())
+      .then(userGamesArray => setDisplayUserGames(userGamesArray))
+
+
+  }, [sessionID])
+
   return (
     <div>Loading Game ChangR
+      <button onClick={() => setShowMyGame(!showMyGame)}>Test</button>
       <NavBar BASE_URL={BASE_URL} setSessionID={setSessionID}/>
-      <AllGames BASE_URL={BASE_URL} gamesArray={gamesArray} sessionID={sessionID} userGamesArray={userGamesArray}/>
-      {/* <MyGames/> */}
+      {showMyGame ? 
+        <MyGames 
+          BASE_URL={BASE_URL} 
+          sessionID={sessionID} 
+          displayUserGames={displayUserGames} 
+          showMyGame={showMyGame}
+          userGamesArray={userGamesArray} 
+          setUserGamesArray={setUserGamesArray}
+          gamesArray={gamesArray} 
+          setGamesArray={setGamesArray}
+          setDisplayUserGames={setDisplayUserGames}
+        /> 
+      : 
+        <AllGames 
+          BASE_URL={BASE_URL} 
+          sessionID={sessionID}  
+          gamesArray={gamesArray} 
+          showMyGame={showMyGame}
+          userGamesArray={userGamesArray} 
+          setUserGamesArray={setUserGamesArray}
+          gamesArray={gamesArray} 
+          setGamesArray={setGamesArray}
+        />
+      }
     </div> 
   )
 }
