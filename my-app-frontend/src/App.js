@@ -21,7 +21,7 @@ function App() {
   return (
     <div>Loading Game ChangR
       <NavBar BASE_URL={BASE_URL} setSessionID={setSessionID}/>
-      <AllGames gamesArray={gamesArray}/>
+      <AllGames BASE_URL={BASE_URL} gamesArray={gamesArray}/>
       {/* <MyGames/> */}
     </div> 
   )

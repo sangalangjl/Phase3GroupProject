@@ -15,7 +15,7 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
         toggleSignUp ? fetch(`${BASE_URL}/users/signup`, headers) : fetch(`${BASE_URL}/users/login`, headers)
         .then(resp => resp.json())
         .then(userID => {
-           
+
             switch (userID) {
                 case "a": 
                     console.log("Wrong Password")
@@ -41,16 +41,16 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
                 },
                 body: JSON.stringify(formData)
             }
-                 if (toggleSignUp) {
+                if (toggleSignUp) {
                    //if that's true then password and confirm password must match
-                 if (formData.password === confirmPassword){
+                if (formData.password === confirmPassword){
                     postData(headers)
-                 } else {
-                     console.log("Passwords do not match")
-                 }
+                } else {
+                    console.log("Passwords do not match")
+                }
                 } else {
                     postData(headers)
-               }               
+            }               
     }
 
     function handleOnChange(e) {
