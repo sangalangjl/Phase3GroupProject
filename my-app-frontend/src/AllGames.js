@@ -4,8 +4,8 @@ import placeholder from './assests/placeholder.jpg'
 
 function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray}) {
 
-    const displayGameCards = gamesArray.map(game => <GameCard game={game} key={game.id} BASE_URL={BASE_URL} sessionID={sessionID} userGamesArray={userGamesArray}/>)
-
+    const platformArray = ["Console", "PC", "Mac", "Mobile", "VR"]
+    const genreArray = ["Shooters", "Role-Playing", "Action-Adventure", "Survival and Horror", "Platformer"]
     const [formData, setFormData] = useState({
         title: "",
         //add image url
@@ -13,6 +13,33 @@ function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray}) {
         genre: ""
     })
 
+    const displayGameCards = gamesArray.map(game => 
+        <GameCard 
+            key={game.id}
+            game={game} 
+            BASE_URL={BASE_URL}
+            sessionID={sessionID}
+            userGamesArray={userGamesArray}
+        />
+    )
+
+    const platformOptions = platformArray.map((platform, index) => 
+        <li key={index}>
+            <input type="radio" value={platform} name={platform} id={platform} onChange={handleOnChange}/>
+            <label>
+                {platform}
+            </label>
+        </li>
+    )
+
+    const genreOptions = genreArray.map((genre, index) => 
+        <li key={index}>
+            <input type="radio" value={genre} name={genre} id={genre} onChange={handleOnChange}/>
+            <label>
+                {genre}
+            </label>
+        </li>
+    )
 
     const handleOnClickAddGame = (e) => {
         console.log(e) //click will render add game form 
@@ -27,35 +54,14 @@ function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray}) {
 
         const headers = {
             method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(formData)
         }
+
         fetch(`${BASE_URL}/games/create`, headers)
         .then(r => r.json())
         .then(data => console.log(data))
     }
-
-    const platformArray = ["Console", "PC", "Mac", "Mobile", "VR"]
-    const platformOptions = platformArray.map((platform, index) => 
-        <li key={index}>
-            <input type="radio" value={platform} name={platform} id={platform} onChange={handleOnChange}/>
-            <label>
-                {platform}
-            </label>
-        </li>
-    )
-
-    const genreArray = ["Shooters", "Role-Playing", "Action-Adventure", "Survival and Horror", "Platformer"]
-    const genreOptions = genreArray.map((genre, index) => 
-    <li key={index}>
-        <input type="radio" value={genre} name={genre} id={genre} onChange={handleOnChange}/>
-        <label>
-            {genre}
-        </label>
-    </li>
-)
 
     return (
     <div className="AllGamesContainer">

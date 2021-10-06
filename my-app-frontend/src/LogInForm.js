@@ -1,15 +1,12 @@
 import React, {useState} from "react";
 
-
 function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
     
-
+    const [confirmPassword, setConfirmPassword] = useState ("")
     const [formData, setFormData] = useState({
         name: "",
         password: ""
     })
-
-    const [confirmPassword, setConfirmPassword] = useState ("")
 
     function postData(headers) {
         toggleSignUp ? fetch(`${BASE_URL}/users/signup`, headers) : fetch(`${BASE_URL}/users/login`, headers)
@@ -34,29 +31,27 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
     function handleSubmit(e) {
         e.preventDefault()
 
-            const headers = {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
+        const headers = {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(formData)
+        }
+
+        if (toggleSignUp) {
+            //if that's true then password and confirm password must match
+            if (formData.password === confirmPassword){
+                postData(headers)
+            }else {
+                console.log("Passwords do not match")
             }
-                if (toggleSignUp) {
-                   //if that's true then password and confirm password must match
-                if (formData.password === confirmPassword){
-                    postData(headers)
-                } else {
-                    console.log("Passwords do not match")
-                }
-                } else {
-                    postData(headers)
-            }               
+        }else {
+            postData(headers)
+        }               
     }
 
     function handleOnChange(e) {
         setFormData({...formData, [e.target.name]:e.target.value})
     }
-
 
     return (
         <>
@@ -66,10 +61,11 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
                 <label>Password: </label>
                 <input type="password" name="password" onChange={handleOnChange}/>
                 {toggleSignUp? 
-                <>
-                    <label>Confirm Password: </label> 
-                    <input type="password" name="confirm_password" onChange={(e) => setConfirmPassword(e.target.value)}/> 
-                </>: null } 
+                    <>
+                        <label>Confirm Password: </label> 
+                        <input type="password" name="confirm_password" onChange={(e) => setConfirmPassword(e.target.value)}/> 
+                    </>
+                : null } 
             <input type="submit" />
             </form> 
         </>
