@@ -106,6 +106,7 @@
   width: 200px;
   height: 350px;
   overflow: hidden;
+  margin: 30px 25px 0 25px;
 }
 
 .AddGameCard {
@@ -169,6 +170,7 @@
 .CardPlatform img {
   height: 40px;
   width: 100%;
+  margin: 5px 10px 5px 10px; 
 }
 
 .CardPlayed,
@@ -176,4 +178,115 @@
 .CardWL {
   width: 33%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: yellowgreen;
+  margin: 0 0.5px 0 0.5px;
+}
+
+
+.CardPlayed img {
+  width: auto;
+  height: 50px
+}
+
+.CardWL img {
+  height: 30px;
+  width: auto;
+
+}
+
+.AddCardImageContainer {
+  background-color: tomato;
+  height: 220px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.AddCardImageContainer img{
+  height: auto;
+  width: 180px;
+}
+
+.GameCardForm{
+  position: absolute;
+  height: auto;
+  width: 500px;
+  background-color: rgb(103, 133, 150);
+}
+
+.GameCardForm li{
+  list-style: none;
+}
+
+.FormImage img {
+  height: 500px;
+  width: 100%;
+}
+
+.PlatformBtnContainer {
+  height: auto;
+  background-color: cadetblue;
+  position: absolute;
+  display: flex;
+  transform: translate(15px, 10px);
+}
+
+.GenreBtnContainer{
+  position: absolute;
+  background-color: cadetblue;
+  transform: translate(350px, 10px);
+}
+
+.FormBtnContainer {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.PlatformBtn,
+.GenreBtn,
+.FormSubmitBtn {
+  position: relative;
+  width: 33%;
+  font-size: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 20px;
+  background-color: burlywood;
+  border: none;
+  
+}
+.PlatformBtn:hover,
+.GenreBtn:hover,
+.FormSubmitBtn:hover {
+  position: relative;
+  width: 33%;
+  font-size: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 20px;
+  background-color: rgb(222, 160, 135);
+  border: none;
+  transform: scale(1.15);
+  z-index: 1;
+}
+
+.platform {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.genre {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
 }

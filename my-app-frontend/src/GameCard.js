@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import Console from "./assests/Console.png"
-import PC from "./assests/PC.png"
-import Mac from "./assests/Mac.png"
-import VR from "./assests/VR.png"
+import CheckMark from "./assests/CheckMark.png"
+import AddBookmark from "./assests/AddBookmark.png"
+import SavedBookMark from "./assests/SavedBookMark.png"
+import GamePlayed from "./assests/GamePlayed.png"
 
 function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray, displayUserGames, showMyGame, gamesArray, setGamesArray, setDisplayUserGames}) {
     
@@ -82,16 +82,17 @@ function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray
             <div className="CardOpts">
                 <div className="CardPlayed">
                     {isPlayed ? 
-                        <button onClick={handleOnClickIsPlayed}>Click to Toggle Not Played Game</button>
+                        <img src={GamePlayed} alt="Game Played?" onClick={handleOnClickIsPlayed}/>
                         : 
-                        <button onClick={handleOnClickIsPlayed}>Already Played</button>}
+                        <img src={CheckMark} alt="Check Mark" onClick={handleOnClickIsPlayed}/>
+                    }
                 </div>
-                <div className="CardPlatform"><img src={`https://raw.githubusercontent.com/sangalangjl/Phase3GroupProject/master/my-app-frontend/src/assests/${platform}.png`}/></div>
+                <div className="CardPlatform"><img alt="Platform Icon" src={`https://raw.githubusercontent.com/sangalangjl/Phase3GroupProject/master/my-app-frontend/src/assests/${platform}.png`}/></div>
                 <div className="CardWL">
                     {isInWishlist ? 
-                        <button onClick={handleDeleteFromWishlist}>In Wishlist</button>
+                        <img alt="Saved to Wishlist " src={SavedBookMark} onClick={handleDeleteFromWishlist}/>
                     : 
-                        <button onClick={handleOnClickWishlist}>Add to Wishlist</button>
+                        <img src={AddBookmark} alt="Add to Wishlist" onClick={handleOnClickWishlist}/>
                     }
                 </div>
             </div>

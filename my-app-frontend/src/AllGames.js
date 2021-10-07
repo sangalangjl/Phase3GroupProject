@@ -1,88 +1,55 @@
 import React, {useState} from "react";
 import GameCard from './GameCard'
-import placeholder from './assests/placeholder.jpg'
+import GamePlayed from './assests/GamePlayed.png'
+import AddBookmark from "./assests/AddBookmark.png"
+import AddGame from "./assests/AddGame.png"
+import AddGameForm from "./AddGameForm";
 
 function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray, setUserGamesArray, showMyGame, setGamesArray, displayUserGames, setDisplayUserGames}) {
 
-    const platformArray = ["Console", "PC", "Mac", "Mobile", "VR"]
-    const genreArray = ["Shooters", "Role-Playing", "Action-Adventure", "Survival and Horror", "Platformer"]
-    const [formData, setFormData] = useState({
-        title: "",
-        image: "",
-        platform: "",
-        genre: ""
-    })
+
+
+    const [showGameForm, setShowGameForm] = useState(false)
 
     const displayGameCards = gamesArray.map(game => 
-        <GameCard 
-            key={game.id}
-            game={game} 
-            BASE_URL={BASE_URL}
-            sessionID={sessionID}
-            userGamesArray={userGamesArray}
-            setUserGamesArray={setUserGamesArray}
-            showMyGame={showMyGame}
-            gamesArray={gamesArray} 
-            setGamesArray={setGamesArray}
-            displayUserGames={displayUserGames} 
-            setDisplayUserGames={setDisplayUserGames}          
-        />
+        <>
+            <GameCard 
+                key={game.id}
+                game={game} 
+                BASE_URL={BASE_URL}
+                sessionID={sessionID}
+                userGamesArray={userGamesArray}
+                setUserGamesArray={setUserGamesArray}
+                showMyGame={showMyGame}
+                gamesArray={gamesArray} 
+                setGamesArray={setGamesArray}
+                displayUserGames={displayUserGames} 
+                setDisplayUserGames={setDisplayUserGames}          
+            />
+        </>
+        
     )
-
-    const platformOptions = platformArray.map((platform, index) => 
-        <li key={index}>
-            <input type="radio" value={platform} name={platform} id={platform} onChange={handleOnChange}/>
-            <label>
-                {platform}
-            </label>
-        </li>
-    )
-
-    const genreOptions = genreArray.map((genre, index) => 
-        <li key={index}>
-            <input type="radio" value={genre} name={genre} id={genre} onChange={handleOnChange}/>
-            <label>
-                {genre}
-            </label>
-        </li>
-    )
-
-    const handleOnClickAddGame = (e) => {
-        console.log(e) //click will render add game form 
-    }
-
-    function handleOnChange(e) {
-        setFormData({...formData, [e.target.name]:e.target.value})
-    }
-
-    const handleOnSubmit = (e) => {
-        e.preventDefault()
-
-        const headers = {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(formData)
-        }
-
-        fetch(`${BASE_URL}/games/create`, headers)
-        .then(r => r.json())
-        .then(data => console.log(data))
-    }
-
     return (
     <div className="AllGamesContainer">
-        <img className="AddGameCard" src={placeholder} alt="AddGameCard" onClick={handleOnClickAddGame}/>
-        {displayGameCards}
-        <div className="GameCardForm">
-            <form onSubmit={handleOnSubmit}>
-                <input type="text" placeholder="Title" onChange={handleOnChange} name="title"/>
-                <input type="url" placeholder="Image URL" name="image"/>
-                <ul className="platform">{platformOptions}</ul>
-                <ul className="genre">{genreOptions}</ul>
-                <input type="submit"/>
-            </form>
+        <div className="cardContainer">
+            <div className="AddCardImageContainer">
+                <img src={AddGame} alt={AddGame} onClick= {() => setShowGameForm(true)}/>
+            </div>
+            <div className="CardTNG">
+                <div className="CardTitle">Add a Game</div>
+            </div>
+            <div className="CardOpts">
+                <div className="CardPlayed"> 
+                    <img src={GamePlayed} alt="Game Played?"/>
+                </div>
+                <div className="CardPlatform"><img alt="Platform Icon" src={`https://raw.githubusercontent.com/sangalangjl/Phase3GroupProject/master/my-app-frontend/src/assests/PC.png`}/></div>
+                <div className="CardWL">
+                        <img src={AddBookmark} alt="Add to Wishlist"/>
+                </div>
+            </div>
         </div>
-        
+        {displayGameCards}
+        {showGameForm ? <AddGameForm setShowGameForm={setShowGameForm} BASE_URL={BASE_URL}/>  : null}  
     </div>
 
     )
