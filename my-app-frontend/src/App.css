@@ -167,6 +167,13 @@
 }
 
 .CardPlatform img {
-  height: 20px;
-  width: 22px;
+  height: 40px;
+  width: 100%;
+}
+
+.CardPlayed,
+.CardPlatform,
+.CardWL {
+  width: 33%;
+  height: 100%;
 }
