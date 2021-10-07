@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import GameCard from "./GameCard";
 
 function MyGames ({BASE_URL, sessionID, displayUserGames, showMyGame, userGamesArray, setUserGamesArray, gamesArray, setGamesArray, setDisplayUserGames}) {
@@ -20,7 +20,7 @@ function MyGames ({BASE_URL, sessionID, displayUserGames, showMyGame, userGamesA
     )
     
     return (
-    <div>{eachGame}</div>
+    <div className="MyGamesContainer">{eachGame}</div>
     )
 }
 

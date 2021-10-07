@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from "react";
+import Console from "./assests/Console.png"
+import PC from "./assests/PC.png"
+import Mac from "./assests/Mac.png"
+import VR from "./assests/VR.png"
 
 function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray, displayUserGames, showMyGame, gamesArray, setGamesArray, setDisplayUserGames}) {
     
     const {title, genre, platform, game_played, id, image} = game
-
 
     const [isPlayed, setIsPlayed] = useState(game_played)
     const [isInWishlist, setIsInWishList] = useState(true)
@@ -11,6 +14,7 @@ function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray
     // if (showMyGame === false)
         useEffect(() => {
             setIsInWishList((userGamesArray.find(game => id === game.game_id) !== undefined) ? true : false)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [isInWishlist, userGamesArray])  
 
         const handleOnClickWishlist = (e) => {
@@ -68,21 +72,29 @@ function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray
     
     return (
         <div className="cardContainer">
-            <img src={image} alt={image} className="CardImage"/>
-            <div>{title}</div>
-            <div>{genre}</div>
-            <div>{platform}</div>
-            <div>
-                {isPlayed ? 
-                    <button onClick={handleOnClickIsPlayed}>Click to Toggle Not Played Game</button>
-                    : 
-                    <button onClick={handleOnClickIsPlayed}>Already Played</button>}
+            <div className="CardImageContainer">
+                <img src={image} alt={image} className="CardImage"/>
             </div>
-            {isInWishlist ? 
-                <button onClick={handleDeleteFromWishlist}>In Wishlist</button>
-            : 
-                <button onClick={handleOnClickWishlist}>Add to Wishlist</button>
-            }
+            <div className="CardTNG">
+                <div className={title.length > 14 ? "CardTitleBig" : "CardTitle"}>{title}</div>
+                <div className="CardGenre">{genre}</div>
+            </div>
+            <div className="CardOpts">
+                <div className="CardPlayed">
+                    {isPlayed ? 
+                        <button onClick={handleOnClickIsPlayed}>Click to Toggle Not Played Game</button>
+                        : 
+                        <button onClick={handleOnClickIsPlayed}>Already Played</button>}
+                </div>
+                <div className="CardPlatform"><img src={`Phase3GroupProject/my-app-frontend/src/assests/Console.png`}/></div>
+                <div className="CardWL">
+                    {isInWishlist ? 
+                        <button onClick={handleDeleteFromWishlist}>In Wishlist</button>
+                    : 
+                        <button onClick={handleOnClickWishlist}>Add to Wishlist</button>
+                    }
+                </div>
+            </div>
         </div>
     )
 }

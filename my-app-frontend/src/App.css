@@ -1,5 +1,111 @@
-.App {
+.AppContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.NavBar {
+  position: relative;
+  height: 150px;
+  background-color: blue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.logoNtitle {
+  width: 325px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: red;
+  height: 100%;
+}
+
+.Navlogo {
+  width: 100px;
+  margin-left: 35px;
+}
+
+.Navtitle {
+  margin-left: 25px;
+  font-size: 40px;
+  color: whitesmoke;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.GamesNLogIn {
+  background-color: teal;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.GamesNLogIn div {
+  margin-right: 20px;
+}
+
+.NavAllGames button, 
+.NavMyGames button,
+.NavLogInBtn {
+  font-size: 45px;
+  background-color: transparent;
+  border: none;
+  color: whitesmoke;
+}
+
+.NavAllGames button:hover,
+.NavMyGames button:hover,
+.NavLogInBtn:hover {
+  text-decoration: underline;
+}
+
+.NavAllGames button:focus,
+.NavMyGames button:focus,
+.NavLogInBtn:focus {
+  text-decoration: underline;
+}
+
+.LogInBtnContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
+.NavRegBtn {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  color: whitesmoke;
+  margin-bottom: 7px;
+  margin-left: 5px;
+}
+
+.GamesContainer {
+  width: 100%;
+  height: 100%;
+  background-color: wheat;
+  position: relative;
+}
+
+.AllGamesContainer,
+.MyGamesContainer {
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cardContainer {
+  background-color: turquoise;
+  width: 200px;
+  height: 350px;
+  overflow: hidden;
 }
 
 .AddGameCard {
@@ -7,7 +113,60 @@
   height: 150px;
 }
 
+.CardImageContainer {
+  background-color: yellow;
+  height: 220px;
+  width: 100%;
+  overflow: hidden;
+}
+
 .CardImage {
-  width: 150px;
-  height: auto;
+  width: 270px;
+  height: 250px;
+  transform: translate(-40px, 0px);
+}
+
+.CardTNG {
+  background-color: blueviolet;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.CardTitle {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: whitesmoke;
+  font-size: 24px;
+  font-weight: 550;
+}
+
+.CardTitleBig {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: whitesmoke;
+  font-size: 18px;
+  font-weight: 550;
+}
+
+.CardGenre {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: whitesmoke;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.CardOpts {
+  height: 50px;
+  width: 100%;
+  background-color: tomato;
+  display: flex;
+  flex-direction: row;
+}
+
+.CardPlatform img {
+  height: 20px;
+  width: 22px;
 }

@@ -3,7 +3,6 @@ import NavBar from './NavBar';
 import './App.css';
 import MyGames from "./MyGames";
 import AllGames from "./AllGames";
-import GameCard from "./GameCard";
 
 function App() {
   
@@ -28,49 +27,46 @@ function App() {
       setGamesArray(games[0])
       setUserGamesArray(games[1])
     })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
       fetch(`${BASE_URL}/users/${sessionID}`)
       .then(r => r.json())
       .then(userGamesArray => setDisplayUserGames(userGamesArray))
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionID])
 
-  const handleShowMyGameBtn = () => {
-    setShowMyGame(!showMyGame)
-  }
-
   return (
-    <div>Loading Game ChangR
-      <button onClick={handleShowMyGameBtn}>Test</button>
-      <NavBar BASE_URL={BASE_URL} setSessionID={setSessionID}/>
-      {showMyGame ? 
-        <MyGames 
-          BASE_URL={BASE_URL} 
-          sessionID={sessionID} 
-          displayUserGames={displayUserGames} 
-          showMyGame={showMyGame}
-          userGamesArray={userGamesArray} 
-          setUserGamesArray={setUserGamesArray}
-          gamesArray={gamesArray} 
-          setGamesArray={setGamesArray}
-          setDisplayUserGames={setDisplayUserGames}
-        /> 
-      : 
-        <AllGames 
-          BASE_URL={BASE_URL} 
-          sessionID={sessionID}  
-          gamesArray={gamesArray} 
-          showMyGame={showMyGame}
-          userGamesArray={userGamesArray} 
-          setUserGamesArray={setUserGamesArray}
-          gamesArray={gamesArray} 
-          setGamesArray={setGamesArray}
-          displayUserGames={displayUserGames} 
-          setDisplayUserGames={setDisplayUserGames}
-        />
-      }
+    <div className="AppContainer">
+      <NavBar BASE_URL={BASE_URL} setSessionID={setSessionID} setShowMyGame={setShowMyGame}/>
+        <div className="GamesContainer">
+          {showMyGame ? 
+            <MyGames 
+              BASE_URL={BASE_URL} 
+              sessionID={sessionID} 
+              displayUserGames={displayUserGames} 
+              showMyGame={showMyGame}
+              userGamesArray={userGamesArray} 
+              setUserGamesArray={setUserGamesArray}
+              gamesArray={gamesArray} 
+              setGamesArray={setGamesArray}
+              setDisplayUserGames={setDisplayUserGames}
+            /> 
+          : 
+            <AllGames 
+              BASE_URL={BASE_URL} 
+              sessionID={sessionID}  
+              gamesArray={gamesArray} 
+              showMyGame={showMyGame}
+              userGamesArray={userGamesArray} 
+              setUserGamesArray={setUserGamesArray}
+              setGamesArray={setGamesArray}
+              displayUserGames={displayUserGames} 
+              setDisplayUserGames={setDisplayUserGames}
+            />
+        }
+      </div> 
     </div> 
   )
 }
