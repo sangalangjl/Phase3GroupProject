@@ -86,7 +86,7 @@ function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray
                         : 
                         <button onClick={handleOnClickIsPlayed}>Already Played</button>}
                 </div>
-                <div className="CardPlatform"><img src={`Phase3GroupProject/my-app-frontend/src/assests/Console.png`}/></div>
+                <div className="CardPlatform"><img src={`https://raw.githubusercontent.com/sangalangjl/Phase3GroupProject/master/my-app-frontend/src/assests/${platform}.png`}/></div>
                 <div className="CardWL">
                     {isInWishlist ? 
                         <button onClick={handleDeleteFromWishlist}>In Wishlist</button>
