@@ -10,7 +10,7 @@ function App() {
   const BASE_URL = "http://localhost:9292"
   const [gamesArray, setGamesArray] = useState([])
   const [userGamesArray, setUserGamesArray] = useState([])
-  const [sessionID, setSessionID] = useState(1) //change back to 0 before publish
+  const [sessionID, setSessionID] = useState(32) //change back to 0 before publish
   const [displayUserGames, setDisplayUserGames] = useState()
   const [showMyGame, setShowMyGame] = useState(false)
 
@@ -35,12 +35,15 @@ function App() {
       .then(r => r.json())
       .then(userGamesArray => setDisplayUserGames(userGamesArray))
 
-
   }, [sessionID])
+
+  const handleShowMyGameBtn = () => {
+    setShowMyGame(!showMyGame)
+  }
 
   return (
     <div>Loading Game ChangR
-      <button onClick={() => setShowMyGame(!showMyGame)}>Test</button>
+      <button onClick={handleShowMyGameBtn}>Test</button>
       <NavBar BASE_URL={BASE_URL} setSessionID={setSessionID}/>
       {showMyGame ? 
         <MyGames 
@@ -64,6 +67,8 @@ function App() {
           setUserGamesArray={setUserGamesArray}
           gamesArray={gamesArray} 
           setGamesArray={setGamesArray}
+          displayUserGames={displayUserGames} 
+          setDisplayUserGames={setDisplayUserGames}
         />
       }
     </div> 

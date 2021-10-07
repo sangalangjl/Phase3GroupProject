@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 
 function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray, displayUserGames, showMyGame, gamesArray, setGamesArray, setDisplayUserGames}) {
     
-    const {title, genre, platform, game_played, id} = game
+    const {title, genre, platform, game_played, id, image} = game
 
 
     const [isPlayed, setIsPlayed] = useState(game_played)
@@ -31,6 +31,7 @@ function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray
                 setUserGamesArray([...userGamesArray, data])
                 setIsInWishList(!isInWishlist)
             })
+            setDisplayUserGames([...displayUserGames, game])
         }
 
         const handleDeleteFromWishlist = () => {
@@ -67,6 +68,7 @@ function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray
     
     return (
         <div className="cardContainer">
+            <img src={image} alt={image} className="CardImage"/>
             <div>{title}</div>
             <div>{genre}</div>
             <div>{platform}</div>

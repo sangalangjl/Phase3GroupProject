@@ -2,17 +2,16 @@ import React, {useState} from "react";
 import GameCard from './GameCard'
 import placeholder from './assests/placeholder.jpg'
 
-function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray, setUserGamesArray, showMyGame, setGamesArray}) {
+function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray, setUserGamesArray, showMyGame, setGamesArray, displayUserGames, setDisplayUserGames}) {
 
     const platformArray = ["Console", "PC", "Mac", "Mobile", "VR"]
     const genreArray = ["Shooters", "Role-Playing", "Action-Adventure", "Survival and Horror", "Platformer"]
     const [formData, setFormData] = useState({
         title: "",
-        //add image url
+        image: "",
         platform: "",
         genre: ""
     })
-    console.log(gamesArray)
 
     const displayGameCards = gamesArray.map(game => 
         <GameCard 
@@ -25,6 +24,8 @@ function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray, setUserGame
             showMyGame={showMyGame}
             gamesArray={gamesArray} 
             setGamesArray={setGamesArray}
+            displayUserGames={displayUserGames} 
+            setDisplayUserGames={setDisplayUserGames}          
         />
     )
 
@@ -75,7 +76,7 @@ function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray, setUserGame
         <div className="GameCardForm">
             <form onSubmit={handleOnSubmit}>
                 <input type="text" placeholder="Title" onChange={handleOnChange} name="title"/>
-                <input type="url" placeholder="Image URL"/>
+                <input type="url" placeholder="Image URL" name="image"/>
                 <ul className="platform">{platformOptions}</ul>
                 <ul className="genre">{genreOptions}</ul>
                 <input type="submit"/>
