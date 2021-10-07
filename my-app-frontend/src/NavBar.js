@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import UserLogIn from "./UserLogIn";
 import logoGameChangeR from "./assests/logoGameChangeR.png"
 
-function NavBar ({setShowMyGame}) {
+function NavBar ({setShowMyGame, BASE_URL, setSessionID}) {
+
+    const [toggleLogin, setToggleLogin] = useState(false)
     
     return (
         <div className="NavBar">
@@ -18,11 +20,12 @@ function NavBar ({setShowMyGame}) {
                     <button onClick={() => setShowMyGame(true)}>My Games</button>
                 </div>
                 <div className="LogInBtnContainer">
-                    <button className="NavLogInBtn">Log In</button>
-                    <button className="NavRegBtn">Register?</button>
+                    <button onClick={() => setToggleLogin(true)} className="NavLogInBtn">Log In</button>
+                    <button onClick={() => setToggleLogin(true)}className="NavRegBtn">Register?</button>
                 </div>
             </div>
-            {/* <UserLogIn BASE_URL={BASE_URL} setSessionID={setSessionID}/> */}
+            
+                {toggleLogin ?  <div className="ToggleLogReg"><UserLogIn BASE_URL={BASE_URL} setSessionID={setSessionID}/> </div> : null}            
         </div>
     )
 }

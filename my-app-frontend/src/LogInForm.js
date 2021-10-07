@@ -56,17 +56,21 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
     return (
         <>
             <form className="UserSignUp" onSubmit={handleSubmit}>
-            <label>Username: </label>
-                <input type="text" name="name" onChange={handleOnChange}/>
-                <label>Password: </label>
-                <input type="password" name="password" onChange={handleOnChange}/>
+                <div className="UserLogIn">
+                    <label>Username: </label>
+                    <input type="text" name="name" onChange={handleOnChange}/>
+                </div>
+                <div>
+                    <label className="UserPW">Password: </label>
+                    <input type="password" name="password" onChange={handleOnChange}/>
+                </div>
                 {toggleSignUp? 
                     <>
                         <label>Confirm Password: </label> 
                         <input type="password" name="confirm_password" onChange={(e) => setConfirmPassword(e.target.value)}/> 
                     </>
                 : null } 
-            <input type="submit" />
+            <input value={toggleSignUp ? "Register" : "Log In"} type="submit"/>
             </form> 
         </>
     )

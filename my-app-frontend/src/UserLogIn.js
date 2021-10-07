@@ -12,7 +12,7 @@ function UserLogIn ({BASE_URL, setSessionID}) {
     return (
         
     <div className="userLoginContainer">
-        <button className="toggleButton" onClick={handleToggle}>Sign Up / Log In</button>
+        <button className="toggleButton" onClick={handleToggle}>{toggleSignUp ? "Log In" : "Register?"}</button>
         <LogInForm 
             toggleSignUp={toggleSignUp} 
             BASE_URL={BASE_URL} 
