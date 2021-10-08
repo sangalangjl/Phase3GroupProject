@@ -134,7 +134,7 @@
 }
 
 .cardContainer {
-  background-color: turquoise;
+  background-color: transparent;
   width: 200px;
   height: 350px;
   overflow: hidden;
@@ -147,7 +147,7 @@
 }
 
 .CardImageContainer {
-  background-color: yellow;
+  background-color: transparent;
   height: 220px;
   width: 100%;
   overflow: hidden;
@@ -272,7 +272,7 @@
 
 .PlatformBtnContainer {
   height: auto;
-  background-color: cadetblue;
+  background-color: #6E85B2;
   position: absolute;
   display: flex;
   padding: 10px;
@@ -282,7 +282,7 @@
 
 .GenreBtnContainer{
   position: absolute;
-  background-color: cadetblue;
+  background-color: #6E85B2;
   transform: translate(350px, 10px);
   padding: 10px;
   border-radius: 10px;
