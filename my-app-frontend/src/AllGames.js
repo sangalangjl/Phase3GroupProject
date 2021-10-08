@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import GameCard from './GameCard'
 import AddGameForm from "./AddGameForm";
 import AddGameCard from "./AddGameCard"
@@ -6,24 +6,21 @@ import AddGameCard from "./AddGameCard"
 function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray, setUserGamesArray, showMyGame, displayUserGames, setDisplayUserGames, manualToggle, setManualToggle, setGamesArray, showGameForm, setShowGameForm, setToggleLogin, setErrorMessage}) {
 
     const displayGameCards = gamesArray.map(game => 
-        <>
-            <GameCard 
-                key={game.id}
-                game={game} 
-                BASE_URL={BASE_URL}
-                sessionID={sessionID}
-                gamesArray={gamesArray}
-                setGamesArray={setGamesArray}
-                userGamesArray={userGamesArray}
-                setUserGamesArray={setUserGamesArray}
-                showMyGame={showMyGame}
-                displayUserGames={displayUserGames} 
-                setDisplayUserGames={setDisplayUserGames}
-                manualToggle={manualToggle}
-                setManualToggle={setManualToggle}      
-            />
-        </>
-        
+        <GameCard 
+            key={game.id}
+            game={game} 
+            BASE_URL={BASE_URL}
+            sessionID={sessionID}
+            gamesArray={gamesArray}
+            setGamesArray={setGamesArray}
+            userGamesArray={userGamesArray}
+            setUserGamesArray={setUserGamesArray}
+            showMyGame={showMyGame}
+            displayUserGames={displayUserGames} 
+            setDisplayUserGames={setDisplayUserGames}
+            manualToggle={manualToggle}
+            setManualToggle={setManualToggle}      
+        />
     )
     return (
     <div className="AllGamesContainer">

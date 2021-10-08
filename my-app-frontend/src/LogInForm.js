@@ -63,16 +63,16 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID, setToggleLogin, setSe
             <form className="UserSignUp" onSubmit={handleSubmit}>
                 <div className="UserLogIn">
                     <label>Username: </label>
-                    <input type="text" name="name" onChange={handleOnChange}/>
+                    <input type="text" name="name" value={formData.name} onChange={handleOnChange}/>
                 </div>
                 <div className="UserPW">
                     <label>Password:</label>
-                    <input type="password" name="password" onChange={handleOnChange}/>
+                    <input type="password" name="password" autoComplete="off" value={formData.password} onChange={handleOnChange}/>
                 </div>
                 {toggleSignUp? 
                     <div className="UserCFPW">
                         <label>Confirm Password: </label> 
-                        <input type="password" name="confirm_password" onChange={(e) => setConfirmPassword(e.target.value)}/> 
+                        <input type="password" name="confirm_password" autoComplete="off" onChange={(e) => setConfirmPassword(e.target.value)}/> 
                     </div>
                 : null } 
                 <div> 

@@ -35,9 +35,11 @@ function App() {
   }, [sessionID, manualToggle])
 
   useEffect(() => {
-      fetch(`${BASE_URL}/users/${sessionID}`)
-      .then(r => r.json())
-      .then(userGamesArray => setDisplayUserGames(userGamesArray))
+    if(sessionID === 0) return setDisplayUserGames([])
+
+    fetch(`${BASE_URL}/users/${sessionID}`)
+    .then(r => r.json())
+    .then(userGamesArray => setDisplayUserGames(userGamesArray))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionID, manualToggle])
 
@@ -51,7 +53,6 @@ function App() {
         setSessionUsername={setSessionUsername}
         toggleLogin={toggleLogin}
         setToggleLogin={setToggleLogin}
-        setDisplayUserGames={setDisplayUserGames}
         errorMessage={errorMessage} 
         setErrorMessage={setErrorMessage}
       />
@@ -82,8 +83,6 @@ function App() {
             setUserGamesArray={setUserGamesArray}
             displayUserGames={displayUserGames} 
             setDisplayUserGames={setDisplayUserGames}
-            manualToggle={manualToggle}
-            setManualToggle={setManualToggle}
             manualToggle={manualToggle}
             setManualToggle={setManualToggle}
             showGameForm={showGameForm} 

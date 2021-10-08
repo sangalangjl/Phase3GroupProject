@@ -4,7 +4,7 @@ import logoGameChangeR from "./assests/logoGameChangeR.png"
 import loginbackground from "./assests/loginbackground.png"
 import Xicon from "./assests/Xicon.png"
 
-function NavBar ({setShowMyGame, BASE_URL, sessionUsername, setSessionID, setSessionUsername, toggleLogin, setToggleLogin, setDisplayUserGames, errorMessage, setErrorMessage}) {
+function NavBar ({setShowMyGame, BASE_URL, sessionUsername, setSessionID, setSessionUsername, toggleLogin, setToggleLogin, errorMessage, setErrorMessage}) {
 
     const [toggleSignUp, setToggleSignUp] = useState(false)
 
@@ -23,7 +23,6 @@ function NavBar ({setShowMyGame, BASE_URL, sessionUsername, setSessionID, setSes
     function handleOnClickLogOut(){
         setSessionUsername("")
         setSessionID(0)
-        setDisplayUserGames([])
     }
     
     function handleOnClickAllGames(){
