@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
+import {Switch, Route} from "react-router-dom";
 import NavBar from './NavBar';
 import './App.css';
 import MyGames from "./MyGames";
 import AllGames from "./AllGames";
 
 function App() {
-  
+
   const BASE_URL = "http://localhost:9292"
   const [gamesArray, setGamesArray] = useState([])
   const [userGamesArray, setUserGamesArray] = useState([])
@@ -45,7 +46,7 @@ function App() {
 
   return (
     <div className="AppContainer">
-      <NavBar
+      <NavBar onChangePage={"/"}
         BASE_URL={BASE_URL} 
         sessionUsername={sessionUsername}
         setSessionID={setSessionID} 
@@ -57,40 +58,43 @@ function App() {
         setErrorMessage={setErrorMessage}
       />
       <div className="GamesContainer">
-        {showMyGame ? 
-          <MyGames 
-            BASE_URL={BASE_URL} 
-            sessionID={sessionID}
-            displayUserGames={displayUserGames} 
-            showMyGame={showMyGame}
-            userGamesArray={userGamesArray} 
-            setUserGamesArray={setUserGamesArray}
-            setDisplayUserGames={setDisplayUserGames}
-            manualToggle={manualToggle}
-            setManualToggle={setManualToggle}
-            showGameForm={showGameForm} 
-            setShowGameForm={setShowGameForm}
-            setToggleLogin={setToggleLogin}
-            setErrorMessage={setErrorMessage}
-          /> 
-        : 
-          <AllGames
-            BASE_URL={BASE_URL} 
-            sessionID={sessionID}  
-            gamesArray={gamesArray}
-            showMyGame={showMyGame}
-            userGamesArray={userGamesArray} 
-            setUserGamesArray={setUserGamesArray}
-            displayUserGames={displayUserGames} 
-            setDisplayUserGames={setDisplayUserGames}
-            manualToggle={manualToggle}
-            setManualToggle={setManualToggle}
-            showGameForm={showGameForm} 
-            setShowGameForm={setShowGameForm}
-            setToggleLogin={setToggleLogin}
-            setErrorMessage={setErrorMessage}
-          />
-        }
+        <Switch>
+          <Route exact path = "/">
+            <AllGames
+              BASE_URL={BASE_URL} 
+              sessionID={sessionID}  
+              gamesArray={gamesArray}
+              showMyGame={showMyGame}
+              userGamesArray={userGamesArray} 
+              setUserGamesArray={setUserGamesArray}
+              displayUserGames={displayUserGames} 
+              setDisplayUserGames={setDisplayUserGames}
+              manualToggle={manualToggle}
+              setManualToggle={setManualToggle}
+              showGameForm={showGameForm} 
+              setShowGameForm={setShowGameForm}
+              setToggleLogin={setToggleLogin}
+              setErrorMessage={setErrorMessage}
+            />
+          </Route>
+          <Route path = "/my_games">
+            <MyGames 
+              BASE_URL={BASE_URL} 
+              sessionID={sessionID}
+              displayUserGames={displayUserGames} 
+              showMyGame={showMyGame}
+              userGamesArray={userGamesArray} 
+              setUserGamesArray={setUserGamesArray}
+              setDisplayUserGames={setDisplayUserGames}
+              manualToggle={manualToggle}
+              setManualToggle={setManualToggle}
+              showGameForm={showGameForm} 
+              setShowGameForm={setShowGameForm}
+              setToggleLogin={setToggleLogin}
+              setErrorMessage={setErrorMessage}
+            /> 
+          </Route>
+        </Switch>
       </div> 
     </div> 
   )

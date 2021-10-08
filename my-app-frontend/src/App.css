@@ -53,8 +53,25 @@
   margin-right: 20px;
 }
 
-.NavAllGames button, 
-.NavMyGames button,
+.NavAllGamesBtn,
+.NavMyGamesBtn{
+  font-size: 45px;
+  background-color: transparent;
+  border: none;
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.NavAllGamesBtn:hover,
+.NavMyGamesBtn:hover{
+  text-decoration: underline;
+}
+
+.NavAllGamesBtn.active,
+.NavMyGamesBtn.active{
+  text-decoration: underline;
+}
+
 .NavLogInBtn {
   font-size: 45px;
   background-color: transparent;
@@ -62,15 +79,12 @@
   color: whitesmoke;
 }
 
-.NavAllGames button:hover,
-.NavMyGames button:hover,
 .NavLogInBtn:hover,
 .NavRegBtn:hover {
   text-decoration: underline;
 }
 
-.NavAllGames button:focus,
-.NavMyGames button:focus,
+
 .NavLogInBtn:focus {
   text-decoration: underline;
 }

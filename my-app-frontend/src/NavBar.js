@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {NavLink} from "react-router-dom";
 import UserLogIn from "./UserLogIn";
 import logoGameChangeR from "./assests/logoGameChangeR.png"
 import loginbackground from "./assests/loginbackground.png"
@@ -44,10 +45,10 @@ function NavBar ({setShowMyGame, BASE_URL, sessionUsername, setSessionID, setSes
                 </div>
                 <div className="GamesNLogIn">
                     <div className="NavAllGames">
-                        <button onClick={handleOnClickAllGames}>All Games</button>
+                        <NavLink exact to = "/" className="NavAllGamesBtn" onClick={handleOnClickAllGames}>All Games</NavLink>
                     </div>
                     <div className="NavMyGames">
-                        <button onClick={handleOnClickMyGames}>My Games</button>
+                        <NavLink to = "/my_games" className="NavMyGamesBtn" onClick={handleOnClickMyGames}>My Games</NavLink>
                     </div>
                     {sessionUsername === ""?
                         <div className="LogInBtnContainer">
