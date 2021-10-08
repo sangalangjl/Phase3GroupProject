@@ -75,10 +75,7 @@ function AddGameForm({BASE_URL, setShowGameForm}) {
                 </div> : null}
                 {toggleGenre ? <div className="GenreBtnContainer">
                     <ul className="genre">{genreOptions}</ul>
-
                 </div> : null}
-                
-            
             </form>
         </div>
     )

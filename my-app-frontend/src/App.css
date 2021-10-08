@@ -7,7 +7,8 @@
 .NavBar {
   position: relative;
   height: 150px;
-  background-color: rgb(42, 74, 129);
+  background-color: #08056e;
+  opacity: 90%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,7 +22,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: blue;
+  background-color: #08056e;
+  opacity: 90%;
   height: 100%;
 }
 
@@ -33,12 +35,13 @@
 .Navtitle {
   margin-left: 25px;
   font-size: 40px;
-  color: whitesmoke;
+  color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .GamesNLogIn {
-  background-color: teal;
+  background-color: #08056e;
+  opacity: 90%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -55,7 +58,7 @@
   font-size: 45px;
   background-color: transparent;
   border: none;
-  color: whitesmoke;
+  color: white;
 }
 
 .NavAllGames button:hover,
@@ -89,7 +92,8 @@
 .GamesContainer {
   width: 100%;
   height: 100%;
-  background-color: wheat;
+  background: rgb(164,81,81);
+  background: linear-gradient(90deg, rgba(164,81,81,1) 0%, rgba(9,9,121,1) 47%, rgba(34,42,113,1) 90%);
   position: relative;
 }
 
@@ -129,7 +133,7 @@
 }
 
 .CardTNG {
-  background-color: blueviolet;
+  background-color: #5C527F;
   height: 80px;
   width: 100%;
   display: flex;
@@ -163,14 +167,14 @@
 .CardOpts {
   height: 50px;
   width: 100%;
-  background-color: tomato;
+  background-color: #5C527F;
   display: flex;
   flex-direction: row;
 }
 
 .CardPlatform img {
-  height: 40px;
-  width: 100%;
+  height: 35px;
+  width: auto;
   margin: 5px 10px 5px 10px; 
 }
 
@@ -182,7 +186,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: yellowgreen;
+  background-color: #6E85B2;
   margin: 0 0.5px 0 0.5px;
 }
 
@@ -199,7 +203,7 @@
 }
 
 .AddCardImageContainer {
-  background-color: tomato;
+  background-color: #f9f9f9;
   height: 220px;
   width: 100%;
   overflow: hidden;
@@ -218,7 +222,7 @@
   position: absolute;
   height: auto;
   width: 500px;
-  background-color: rgb(103, 133, 150);
+  background-color: #6E85B2;
 }
 
 .GameCardForm li{
@@ -295,10 +299,10 @@
 .ToggleLogReg {
   position: absolute;
   flex-direction: column;
-  top: 150px;
+  top: 80px;
   z-index: 1;
   box-shadow: none;
-  background-color: chocolate;
+  background-color: #34273B;
   height: 600px;
   width: 450px;
   overflow: hidden;
@@ -329,7 +333,7 @@
 
 .USemptySpace {
   height: 130px;
-  background-color: lightgray;
+  background-color: whitesmoke;
   z-index: 1;
 }
 
@@ -390,7 +394,7 @@
   width: 220px;
   font-size: 20px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: thistle;
+  background-color: #6E85B2;
   border: none;
   border-radius: 10px;
   color: whitesmoke;
