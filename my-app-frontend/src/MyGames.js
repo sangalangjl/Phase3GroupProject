@@ -25,13 +25,13 @@ function MyGames ({BASE_URL, sessionID, displayUserGames, userGamesArray, setUse
     return (
         <>
         <div className="MyGamesContainer">
+            {eachGame}
             <AddGameCard 
                 setShowGameForm={setShowGameForm}
                 setToggleLogin={setToggleLogin}
                 sessionID={sessionID}
                 setErrorMessage={setErrorMessage}
             />
-            {eachGame}
             {showGameForm ? 
                 <AddGameForm 
                 setShowGameForm={setShowGameForm} 

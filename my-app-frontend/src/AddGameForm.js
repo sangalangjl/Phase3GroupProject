@@ -73,6 +73,7 @@ function AddGameForm({BASE_URL, setShowGameForm, manualToggle, setManualToggle})
                 </div>
             </form>
             <div className="FormBtnContainer">
+                {/* Buttons are now outside the form to prevent the auto submit every time they are toggled */}
                 <button className="PlatformBtn" onClick={() => setTogglePlatform(!togglePlatform)}>Platform</button>
                 <button className="FormSubmitBtn" onClick={handleOnSubmit}>Add Game</button>
                 <button className="GenreBtn" onClick={() => setToggleGenre(!toggleGenre)}>Genre</button>
