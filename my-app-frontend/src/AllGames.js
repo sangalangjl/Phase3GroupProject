@@ -37,6 +37,7 @@ function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray, setUserGame
             BASE_URL={BASE_URL}
             manualToggle={manualToggle}
             setManualToggle={setManualToggle}
+            sessionID={sessionID}
         />   
         : null}  
     </div>

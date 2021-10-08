@@ -3,7 +3,7 @@ import GameCard from "./GameCard";
 import AddGameCard from "./AddGameCard"
 import AddGameForm from "./AddGameForm";
 
-function MyGames ({BASE_URL, sessionID, displayUserGames, userGamesArray, setUserGamesArray, setDisplayUserGames, gamesArray, setGamesArray, manualToggle, setManualToggle, showGameForm, setShowGameForm, setToggleLogin, setErrorMessage}) {
+function MyGames ({BASE_URL, sessionID, displayUserGames, userGamesArray, setUserGamesArray, setDisplayUserGames, gamesArray, setGamesArray, manualToggle, setManualToggle, showGameForm, setShowGameForm, setToggleLogin, setErrorMessage, showMyGame}) {
 
     const eachGame = displayUserGames === undefined ? null : displayUserGames.map(game => 
         <GameCard 
@@ -19,6 +19,7 @@ function MyGames ({BASE_URL, sessionID, displayUserGames, userGamesArray, setUse
             setDisplayUserGames={setDisplayUserGames}
             manualToggle={manualToggle}
             setManualToggle={setManualToggle}
+            showMyGame={showMyGame}
         />
     )
 
@@ -38,6 +39,7 @@ function MyGames ({BASE_URL, sessionID, displayUserGames, userGamesArray, setUse
                 BASE_URL={BASE_URL}
                 manualToggle={manualToggle}
                 setManualToggle={setManualToggle}
+                sessionID={sessionID}
             />   
             : null}
         </div>

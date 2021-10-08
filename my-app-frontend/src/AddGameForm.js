@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import AddGame from './assests/AddGame.png'
 import Xicon from './assests/Xicon.png'
 
-function AddGameForm({BASE_URL, setShowGameForm, manualToggle, setManualToggle}) {
+function AddGameForm({BASE_URL, setShowGameForm, manualToggle, setManualToggle, sessionID}) {
 
     const platformArray = ["Console", "PC", "Mac", "Mobile", "VR"]
     const genreArray = ["Shooters", "Role-Playing", "Action-Adventure", "Survival and Horror", "Platformer"]
@@ -12,7 +12,8 @@ function AddGameForm({BASE_URL, setShowGameForm, manualToggle, setManualToggle})
         title: "",
         image: "",
         platform: "",
-        genre: ""
+        genre: "",
+        user_id: sessionID
     })
 
     function handleOnChange(e) {
@@ -47,13 +48,17 @@ function AddGameForm({BASE_URL, setShowGameForm, manualToggle, setManualToggle})
         }
 
         fetch(`${BASE_URL}/games/creategame`, headers)
-
-        setFormData({
-            title: "",
-            image: "",
-            platform: "",
-            genre: ""
+        .then(resp => resp.json())
+        .then(data => {
+            setFormData({
+                title: "",
+                image: "",
+                platform: "",
+                genre: "",
+                user_id: sessionID
+            })
         })
+
         setManualToggle(!manualToggle)
         setTogglePlatform(false)
         setToggleGenre(false)
