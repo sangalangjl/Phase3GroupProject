@@ -18,7 +18,7 @@
 }
 
 .logoNtitle {
-  width: 325px;
+  width: 425px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -33,8 +33,8 @@
 }
 
 .Navtitle {
-  margin-left: 25px;
-  font-size: 40px;
+  margin-left: 45px;
+  font-size: 50px;
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -46,6 +46,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .GamesNLogIn div {
@@ -58,7 +59,7 @@
   font-size: 45px;
   background-color: transparent;
   border: none;
-  color: white;
+  color: whitesmoke;
 }
 
 .NavAllGames button:hover,
@@ -74,10 +75,34 @@
   text-decoration: underline;
 }
 
-.LogInBtnContainer {
+.LogOutBtnContainer{
   display: flex;
+  flex-direction: column;
   flex-wrap: nowrap;
-  align-items: flex-end;
+  justify-content: center;
+}
+
+.NavLogOutText{
+  margin: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  color:whitesmoke;
+}
+
+.NavLogOutText:hover{
+  text-decoration: underline;
+}
+
+.NavLogOutBtn{
+  font-size: 25px;
+  background-color: transparent;
+  border: none;
+  color: whitesmoke;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .NavRegBtn {
@@ -104,6 +129,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  min-height: 750px;
+  height: 100%;
 }
 
 .cardContainer {
@@ -127,9 +154,9 @@
 }
 
 .CardImage {
-  width: 270px;
-  height: 250px;
-  transform: translate(-40px, 0px);
+  width: 200px;
+  height: 280px;
+  transform: translate(0px, -5px);
 }
 
 .CardTNG {
@@ -223,6 +250,7 @@
   height: auto;
   width: 500px;
   background-color: #6E85B2;
+  top: 20px;
 }
 
 .GameCardForm li{
@@ -230,8 +258,16 @@
 }
 
 .FormImage img {
-  height: 500px;
+  min-height: 500px;
+  max-height: 500px;
   width: 100%;
+}
+.FormInput input{
+  height: 25px;
+  width: 250px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: transparent;
 }
 
 .PlatformBtnContainer {
@@ -246,6 +282,8 @@
   position: absolute;
   background-color: cadetblue;
   transform: translate(350px, 10px);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .FormBtnContainer {
@@ -264,8 +302,9 @@
   border-radius: 20px;
   background-color: burlywood;
   border: none;
-  
+  height: 78px;
 }
+
 .PlatformBtn:hover,
 .GenreBtn:hover,
 .FormSubmitBtn:hover {
@@ -296,10 +335,17 @@
   margin: 0;
 }
 
+.gameFormX{
+  width: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 .ToggleLogReg {
   position: absolute;
   flex-direction: column;
-  top: 80px;
+  top: 70px;
   z-index: 1;
   box-shadow: none;
   background-color: #34273B;

@@ -1,36 +1,37 @@
 import React, {useState} from "react";
 
-function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
+function LogInForm ({toggleSignUp, BASE_URL, setSessionID, setToggleLogin, setSessionUsername, errorMessage, setErrorMessage}) {
     
     const [confirmPassword, setConfirmPassword] = useState ("")
     const [formData, setFormData] = useState({
         name: "",
         password: ""
     })
-    const [errorMessage, setErrorMessage] = useState("")
 
     function postData(headers) {
-        toggleSignUp ? fetch(`${BASE_URL}/users/signup`, headers) : fetch(`${BASE_URL}/users/login`, headers)
+        (toggleSignUp ? 
+        fetch(`${BASE_URL}/users/signup`, headers) : 
+        fetch(`${BASE_URL}/users/login`, headers))
         .then(resp => resp.json())
         .then(userID => {
-
             switch (userID) {
+                case "c": 
+                    setErrorMessage("User Already Exist")
+                    break;
                 case "a": 
                     setErrorMessage("Wrong Password")
                     break;
                 case "b":
                     setErrorMessage("User doesn't exist")
                     break;
-                case "c":
-                    setErrorMessage("User already exist")
-                    break;
-                default:  setSessionID(userID)               
+                default:
+                    setSessionID(userID)
+                    setErrorMessage("")
+                    setToggleLogin(false)
+                    setSessionUsername(formData.name)
             }
         })
     }
-    
-    // fetch(serverEndpoint, {  
-    //   credentials: 'include' 
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -48,7 +49,7 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
             }else {
                 setErrorMessage("Passwords do not match")
             }
-        }else {
+        }else {             //login
             postData(headers)
         }               
     }

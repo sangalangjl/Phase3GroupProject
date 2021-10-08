@@ -1,19 +1,19 @@
 import React, {useState} from "react"
 import AddGame from './assests/AddGame.png'
+import Xicon from './assests/Xicon.png'
 
-function AddGameForm({BASE_URL, setShowGameForm}) {
+function AddGameForm({BASE_URL, setShowGameForm, manualToggle, setManualToggle}) {
 
     const platformArray = ["Console", "PC", "Mac", "Mobile", "VR"]
     const genreArray = ["Shooters", "Role-Playing", "Action-Adventure", "Survival and Horror", "Platformer"]
+    const [togglePlatform, setTogglePlatform] = useState(false)
+    const [toggleGenre, setToggleGenre] = useState(false)
     const [formData, setFormData] = useState({
         title: "",
         image: "",
         platform: "",
         genre: ""
     })
-
-    const [togglePlatform, setTogglePlatform] = useState(false)
-    const [toggleGenre, setToggleGenre] = useState(false)
 
     function handleOnChange(e) {
         setFormData({...formData, [e.target.name]:e.target.value})
@@ -39,7 +39,7 @@ function AddGameForm({BASE_URL, setShowGameForm}) {
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
-
+        if(formData.title === "" || formData.image === "" || formData.platform === "" || formData.genre === "") return;
         const headers = {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
@@ -47,36 +47,51 @@ function AddGameForm({BASE_URL, setShowGameForm}) {
         }
 
         fetch(`${BASE_URL}/games/creategame`, headers)
-        .then(r => r.json())
-        .then(data => console.log(data))
 
-        setShowGameForm(false)
+        setFormData({
+            title: "",
+            image: "",
+            platform: "",
+            genre: ""
+        })
+        setManualToggle(!manualToggle)
+        setTogglePlatform(false)
+        setToggleGenre(false)
     }
-
 
     return(
         <div className="GameCardForm">
-            <form onSubmit={handleOnSubmit}>
+            <form>
                 <div className="FormImage">
-                    <img src={ formData.image === "" ? AddGame : formData.image} alt="Add a Game Form"/>
-                    <input type="url" onChange={handleOnChange} placeholder="Image URL" name="image"/>
+                    <img src={formData.image === "" ? AddGame : formData.image} alt="Add a Game Form"/>
                 </div>
-
-                <input type="text" placeholder="Title" onChange={handleOnChange} name="title"/>
-                <div className="FormBtnContainer">
-                    <button className="PlatformBtn" onClick={() => setTogglePlatform(!togglePlatform) }>Platform</button>
-                    
-                    <input className="FormSubmitBtn" value="Add Game" type="submit"/>
-
-                    <button className="GenreBtn" onClick={() => setToggleGenre(!toggleGenre) }>Genre</button>
+                <div className="FormInput">
+                    <input type="text" placeholder="Title" onChange={handleOnChange} name="title" value={formData.title}/>
                 </div>
-                {togglePlatform ? <div className="PlatformBtnContainer">
-                    <ul className="platform">{platformOptions}</ul>
-                </div> : null}
-                {toggleGenre ? <div className="GenreBtnContainer">
-                    <ul className="genre">{genreOptions}</ul>
-                </div> : null}
+                <div className="FormInput">
+                    <input type="url" onChange={handleOnChange} placeholder="Image URL" name="image" value={formData.image}/>                
+                </div>
             </form>
+            <div className="FormBtnContainer">
+                <button className="PlatformBtn" onClick={() => setTogglePlatform(!togglePlatform)}>Platform</button>
+                <button className="FormSubmitBtn" onClick={handleOnSubmit}>Add Game</button>
+                <button className="GenreBtn" onClick={() => setToggleGenre(!toggleGenre)}>Genre</button>
+            </div>
+
+            {togglePlatform ? 
+                    <div className="PlatformBtnContainer">
+                        <ul className="platform">
+                            {platformOptions}
+                        </ul>
+                    </div> 
+            : null}
+            {toggleGenre ? <div className="GenreBtnContainer">
+                    <ul className="genre">
+                        {genreOptions}
+                    </ul>
+                </div> 
+            : null}
+            <img className="gameFormX" onClick={()=>setShowGameForm(false)} src={Xicon} alt="X"/>
         </div>
     )
 }

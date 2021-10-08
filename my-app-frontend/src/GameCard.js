@@ -4,7 +4,7 @@ import AddBookmark from "./assests/AddBookmark.png"
 import SavedBookMark from "./assests/SavedBookMark.png"
 import GamePlayed from "./assests/GamePlayed.png"
 
-function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray, displayUserGames, showMyGame, gamesArray, setGamesArray, setDisplayUserGames}) {
+function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray, displayUserGames, setDisplayUserGames, manualToggle, setManualToggle}) {
     
     const {title, genre, platform, game_played, id, image} = game
 
@@ -18,7 +18,7 @@ function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray
         }, [isInWishlist, userGamesArray])  
 
         const handleOnClickWishlist = (e) => {
-
+            if(sessionID === 0) return;
             const gameId = {
                 game_id: id
             }
@@ -39,6 +39,7 @@ function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray
         }
 
         const handleDeleteFromWishlist = () => {
+            if(sessionID === 0) return;
             const ugl = userGamesArray.find(game => id === game.game_id)
 
             fetch(`${BASE_URL}/users/${sessionID}/user_game_list/${ugl.id}`, {method: "DELETE"})
@@ -46,13 +47,11 @@ function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray
             setUserGamesArray(userGamesArray.filter(game => game.game_id !== id))
             setIsInWishList(!isInWishlist)
 
-            if (showMyGame === true) {
-                setDisplayUserGames(displayUserGames.filter(game => game.id !== id))
-            }
+            setDisplayUserGames(displayUserGames.filter(game => game.id !== id))
         }
 
     const handleOnClickIsPlayed = (e) => {
-
+        if(sessionID === 0) return;
         const toggle_game_played = {
             game_played: !isPlayed
         } 
@@ -64,10 +63,9 @@ function GameCard ({game, BASE_URL, sessionID, userGamesArray, setUserGamesArray
         }
 
         fetch(`${BASE_URL}/games/${id}`, headers)
-        .then(r => r.json())
-        .then(data => console.log(data))
         
         setIsPlayed(!isPlayed)
+        setManualToggle(!manualToggle)
     }
     
     return (

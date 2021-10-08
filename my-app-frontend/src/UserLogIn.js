@@ -1,11 +1,11 @@
 import React from "react";
 import LogInForm from "./LogInForm";
 
-function UserLogIn ({BASE_URL, setSessionID, toggleSignUp, setToggleSignUp}) {
+function UserLogIn ({BASE_URL, setSessionID, toggleSignUp, setToggleSignUp, setToggleLogin, setSessionUsername, errorMessage, setErrorMessage}) {
     
-
     function handleToggle() {
         setToggleSignUp((toggleSignUp) => !toggleSignUp)
+        setErrorMessage("")
     }
 
     return (
@@ -16,6 +16,10 @@ function UserLogIn ({BASE_URL, setSessionID, toggleSignUp, setToggleSignUp}) {
             toggleSignUp={toggleSignUp} 
             BASE_URL={BASE_URL} 
             setSessionID={setSessionID}
+            setToggleLogin={setToggleLogin}
+            setSessionUsername={setSessionUsername}
+            errorMessage={errorMessage}
+            setErrorMessage={setErrorMessage}
         />
     </div>
     )
