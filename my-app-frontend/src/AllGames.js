@@ -7,8 +7,6 @@ import AddGameForm from "./AddGameForm";
 
 function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray, setUserGamesArray, showMyGame, setGamesArray, displayUserGames, setDisplayUserGames}) {
 
-
-
     const [showGameForm, setShowGameForm] = useState(false)
 
     const displayGameCards = gamesArray.map(game => 
@@ -44,12 +42,12 @@ function AllGames ({gamesArray, BASE_URL, sessionID, userGamesArray, setUserGame
                 </div>
                 <div className="CardPlatform"><img alt="Platform Icon" src={`https://raw.githubusercontent.com/sangalangjl/Phase3GroupProject/master/my-app-frontend/src/assests/PC.png`}/></div>
                 <div className="CardWL">
-                        <img src={AddBookmark} alt="Add to Wishlist"/>
+                    <img src={AddBookmark} alt="Add to Wishlist"/>
                 </div>
             </div>
         </div>
         {displayGameCards}
-        {showGameForm ? <AddGameForm setShowGameForm={setShowGameForm} BASE_URL={BASE_URL}/>  : null}  
+        {showGameForm ? <AddGameForm setShowGameForm={setShowGameForm} BASE_URL={BASE_URL}/> : null}  
     </div>
 
     )

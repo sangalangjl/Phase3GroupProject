@@ -7,6 +7,7 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
         name: "",
         password: ""
     })
+    const [errorMessage, setErrorMessage] = useState("")
 
     function postData(headers) {
         toggleSignUp ? fetch(`${BASE_URL}/users/signup`, headers) : fetch(`${BASE_URL}/users/login`, headers)
@@ -15,11 +16,14 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
 
             switch (userID) {
                 case "a": 
-                    console.log("Wrong Password")
-                break;
+                    setErrorMessage("Wrong Password")
+                    break;
                 case "b":
-                    console.log("User doesn't exist")
-                break;
+                    setErrorMessage("User doesn't exist")
+                    break;
+                case "c":
+                    setErrorMessage("User already exist")
+                    break;
                 default:  setSessionID(userID)               
             }
         })
@@ -42,7 +46,7 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
             if (formData.password === confirmPassword){
                 postData(headers)
             }else {
-                console.log("Passwords do not match")
+                setErrorMessage("Passwords do not match")
             }
         }else {
             postData(headers)
@@ -60,17 +64,20 @@ function LogInForm ({toggleSignUp, BASE_URL, setSessionID}) {
                     <label>Username: </label>
                     <input type="text" name="name" onChange={handleOnChange}/>
                 </div>
-                <div>
-                    <label className="UserPW">Password: </label>
+                <div className="UserPW">
+                    <label>Password:</label>
                     <input type="password" name="password" onChange={handleOnChange}/>
                 </div>
                 {toggleSignUp? 
-                    <>
+                    <div className="UserCFPW">
                         <label>Confirm Password: </label> 
                         <input type="password" name="confirm_password" onChange={(e) => setConfirmPassword(e.target.value)}/> 
-                    </>
+                    </div>
                 : null } 
-            <input value={toggleSignUp ? "Register" : "Log In"} type="submit"/>
+                <div> 
+                    <input className="USLogRegSubmit" value={toggleSignUp ? "Register" : "Log In"} type="submit"/>
+                </div>
+                <div className="ErrorMessage"><p>{errorMessage}</p></div>
             </form> 
         </>
     )

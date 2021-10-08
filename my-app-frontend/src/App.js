@@ -9,7 +9,7 @@ function App() {
   const BASE_URL = "http://localhost:9292"
   const [gamesArray, setGamesArray] = useState([])
   const [userGamesArray, setUserGamesArray] = useState([])
-  const [sessionID, setSessionID] = useState(27) //change back to 0 before publish
+  const [sessionID, setSessionID] = useState(32) //change back to 0 before publish
   const [displayUserGames, setDisplayUserGames] = useState()
   const [showMyGame, setShowMyGame] = useState(false)
 

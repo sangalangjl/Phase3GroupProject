@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import LogInForm from "./LogInForm";
 
-function UserLogIn ({BASE_URL, setSessionID}) {
+function UserLogIn ({BASE_URL, setSessionID, toggleSignUp, setToggleSignUp}) {
     
-    const [toggleSignUp, setToggleSignUp] = useState(false)
 
     function handleToggle() {
         setToggleSignUp((toggleSignUp) => !toggleSignUp)

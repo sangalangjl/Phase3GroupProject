@@ -7,7 +7,7 @@
 .NavBar {
   position: relative;
   height: 150px;
-  background-color: blue;
+  background-color: rgb(42, 74, 129);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: red;
+  background-color: blue;
   height: 100%;
 }
 
@@ -60,7 +60,8 @@
 
 .NavAllGames button:hover,
 .NavMyGames button:hover,
-.NavLogInBtn:hover {
+.NavLogInBtn:hover,
+.NavRegBtn:hover {
   text-decoration: underline;
 }
 
@@ -298,12 +299,25 @@
   z-index: 1;
   box-shadow: none;
   background-color: chocolate;
-  height: 250px;
-  width: 500px;
+  height: 600px;
+  width: 450px;
+  overflow: hidden;
 }
 
-.UserLogIn {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.ToggleLogRegBG {
+  position: absolute;
+  width: 650px;
+  opacity: 0.4;
+  pointer-events: none;
+  transform: translate(-90px, 70px);
+}
+
+.ToggleLogRegContainer {
+  background-color: whitesmoke;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .userLoginContainer {
@@ -311,4 +325,91 @@
   flex-direction: column;
   align-items: center;
   margin: 5px;
+}
+
+.USemptySpace {
+  height: 130px;
+  background-color: lightgray;
+  z-index: 1;
+}
+
+.toggleButton {
+  position: absolute;
+  right: 0;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  color: whitesmoke
+}
+
+.UserSignUp {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  position: absolute;
+} 
+
+.UserSignUp div {
+  margin-bottom: 15px;
+}
+
+.UserSignUp label {
+  color: whitesmoke;
+  font-size: 25px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.UserLogIn {
+  display: flex;
+  flex-direction: column;
+}
+
+.UserLogIn input {
+  height: 30px;
+  width: 250px;
+}
+
+.UserPW,
+.UserCFPW {
+  display: flex;
+  flex-direction: column;
+}
+
+.UserPW input,
+.UserCFPW input {
+  height: 30px;
+  width: 250px;
+}
+
+
+.USLogRegSubmit {
+  height: 50px;
+  width: 220px;
+  font-size: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: thistle;
+  border: none;
+  border-radius: 10px;
+  color: whitesmoke;
+}
+
+.LogInLogo {
+  width: 160px;
+  position: absolute;
+  z-index: 1;
+  transform: translate(140px, -100px);
+}
+
+.XIcon {
+  position: absolute;
+  width: 25px;
+  transform: translate(410px, -125px);
+}
+
+.ErrorMessage p {
+  margin: 0;
+  color:red;
 }
